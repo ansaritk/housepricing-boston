@@ -3,38 +3,87 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing Price Prediction</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          margin: 0;
+          padding: 0;
+      }
 
-  
+      h1 {
+          text-align: center;
+          margin-top: 20px;
+      }
+
+      form {
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #ffffff;
+          border-radius: 5px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+          display: block;
+          margin-bottom: 10px;
+      }
+
+      input[type="number"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+      }
+
+      button[type="submit"] {
+          background-color: #007bff;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+
+      #result {
+          text-align: center;
+          margin-top: 20px;
+          font-weight: bold;
+      }
+  </style>
 </head>
 
 <body>
  <div class="login">
-	<h1>Boston House Price Prediction</h1>
-
+  <h1>Housing Price Prediction</h1>
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-      <input type="text" name="CRIM" placeholder="CRIM" required="required" /><br>
-    	<input type="text" name="ZN" placeholder="ZN" required="required" /><br>
-        <input type="text" name="INDUS" placeholder="INDUS" required="required" /><br>
-        <input type="text" name="CHAS" placeholder="CHAS" required="required" /><br>
-        <input type="text" name="NOX" placeholder="NOX" required="required" /><br>
-        <input type="text" name="RM" placeholder="RM" required="required" /><br>
-        <input type="text" name="Age" placeholder="Age" required="required" /><br>
-        <input type="text" name="DIS" placeholder="DIS" required="required" /><br>
-        <input type="text" name="RAD" placeholder="RAD" required="required" /><br>
-        <input type="text" name="TAX" placeholder="TAX" required="required" /><br>
-        <input type="text" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
-        <input type="text" name="B" placeholder="B" required="required" /><br>
-        <input type="text" name="LSTAT" placeholder="LSTAT" required="required" /><br>
+      <input type="number"  name="CRIM" placeholder="CRIM" required="required" /><br>
+    	<input type="number"  name="ZN" placeholder="ZN" required="required" /><br>
+        <input type="number"  name="INDUS" placeholder="INDUS" required="required" /><br>
+        <input type="number" name="CHAS" placeholder="CHAS" required="required" /><br>
+        <input type="number" name="NOX" placeholder="NOX" required="required" /><br>
+        <input type="number" name="RM" placeholder="RM" required="required" /><br>
+        <input type="number" name="Age" placeholder="Age" required="required" /><br>
+        <input type="number" name="DIS" placeholder="DIS" required="required" /><br>
+        <input type="number" name="RAD" placeholder="RAD" required="required" /><br>
+        <input type="number" name="TAX" placeholder="TAX" required="required" /><br>
+        <input type="number" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
+        <input type="number" name="B" placeholder="B" required="required" /><br>
+        <input type="number" name="LSTAT" placeholder="LSTAT" required="required" /><br>
 
        
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Price</button>
+        <div id="result"></div>
     </form>
 
    <br>
@@ -42,7 +91,6 @@
   
    
  </div>
- {{prediction_text}}
-
+ <h1> {{prediction_text}}</h1>
 </body>
 </html>
